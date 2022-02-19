@@ -1,0 +1,18 @@
+{
+    debug
+    https_port 8443
+    http_port 8080
+}
+
+:8080 {
+    reverse_proxy https://caddy-server:8443 {
+        header_up HOST {upstream_hostport}
+        header_up X-Forwarded-Host {host}
+        transport http {
+            tls
+            tls_client_auth /etc/caddy/keys/client1.crt /etc/caddy/keys/client1.key
+            tls_trusted_ca_certs /etc/caddy/keys/ca.crt
+            tls_insecure_skip_verify
+        }
+    }
+}

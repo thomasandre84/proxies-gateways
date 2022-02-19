@@ -1,0 +1,17 @@
+{
+    debug
+    https_port 8443
+    http_port 8080
+}
+
+:8443 {
+    tls /etc/caddy/keys/server.crt /etc/caddy/keys/server.key {
+        ca_root /etc/caddy/keys/ca.crt
+        client_auth {
+            mode require_and_verify
+            trusted_ca_cert_file /etc/caddy/keys/ca.crt
+            trusted_leaf_cert_file /etc/caddy/keys/client1.crt
+        }
+    }
+    respond "Goodbye, world!"
+}
