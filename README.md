@@ -1,2 +1,2 @@
 # proxies-gateways
-Examples configurations for various reverse proxies or API GWs
+Examples configurations for various reverse proxies and API Gateways.
